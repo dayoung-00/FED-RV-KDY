@@ -258,8 +258,8 @@ small 태그에 적용되어 있어서 여기에 재정의해야함! */
     text-align: justify;
     /* 양쪽정렬시 영어단어 깨서 중앙공백 없애기:wbb */
     word-break: break-all;
-/* 첫줄 들여쓰기:tl */
-table-layout: fixed;
+/* 첫줄 들여쓰기:ti */
+text-indent: 15px;
 }
 
 /* 이미지 오른쪽으로 보내고 옆에 글자 흘러가기 */
