@@ -92,7 +92,7 @@
         사이언스]
       </h3>
       <!-- 2-4. 기사사진 
-       figure요소 : 사진,그림 넣는 블록박스-->
+       figure요소 : <img src="">,그림 넣는 블록박스-->
       <figure class="article-picture">
         <img
           src="./images/arti_img4-1.jpg"
@@ -404,6 +404,7 @@
         </article>
 
 
+
          <!-- 
           [ 용어정의리스트 : dl ]
           
@@ -452,6 +453,54 @@
      </dd>
   </dl>
 </article>
+
+
+        <!-- 
+            [ 테이블 요소 : table ]
+            table > tbody > tr > td
+
+            -> tbody는 안쓰고 tr부터 구현해도
+            브라우저가 자동으로 그려준다!
+
+            주의) table > tr 로 직계선택하게 되면
+            위와 같은 구조적인 이유로 선택되지 않는다!
+
+            _______________________________
+
+            ((간단한 테이블 작성시 필수요소 3가지!))
+            table : 테이블 박스 부모요소
+            tr : 테이블 행요소(table row)
+            td : 테이블 데이터요소(table data)
+           -->
+
+
+           <!-- 사진뉴스 : table -->
+           <article class="photo-news news-box">
+            <h3>사진뉴스</h3>
+            <!-- 3행3열 테이블 구성하기 -->
+<!--              <table border="1">-->             
+                <table>
+              <!-- 첫번째줄 -->
+              <tr>
+                <td>1</td>
+                <td><a href="https://n.news.naver.com/mnews/ranking/article/052/0002103619?ntype=RANKING" target="_blank">양현석, 협찬받았다더니…"7억 시계, 먼저 요청한 정황 포착"</a>
+                </td>
+                <td><img src="./images/양현석 yg 뉴스.jpg"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><a href="https://n.news.naver.com/mnews/ranking/article/052/0002103627?ntype=RANKING" target="_blank">[속보] 여자친구 살해 김레아, 1심 무기징역 선고</a>
+                </td>
+                <td><img src="./images/여자친구 살해 무기징역.jpg"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><a href="https://n.news.naver.com/mnews/article/052/0002103648" target="_blank">순천 묻지마 살해범 박대성 "추가 범행 대상 물색했다"</a>
+                </td>
+                <td><img src="./images/순천묻지마살해범.jpg"></td>
+              </tr>
+             </table>
+          </article>
       <!-- 
         [ html요소에서 특수문자 처리 ]
         & 엔퍼센드 &amp;
