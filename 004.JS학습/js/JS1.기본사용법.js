@@ -26,7 +26,13 @@ function 김비서나와라() {
   //0,1,2,...이런 순서로 수집함
   //하나뿐이어도  0번째라고 해야함!
 
-  console.log(document.getElementsByClassName("pbox"));
+  "클래스선택 HTML컬랙션 객체",
+  console.log(document.getElementsByClassName("pbox"),
+  "요소선택 HTML 컬랙션 객체",
+  document.getElementsByClassName("span"),
+  "아이디선택 HTML 요소 객체",
+  document.getElementsByClassName("name")
+);
 
   //변수의 대상 할당하기!
   var 나변수 = document.getElementsByClassName("pbox").item(0);
@@ -105,4 +111,138 @@ function 김비서나와라() {
 //   나바디.style.backgroundColor="linear-gradient(45deg,lightgreen,hotpink,lightblue";
   나바디.style.transition = "3s 5s";
 
+/*********
+ [JS DOM의 요소 선택 메서드]
+ 1. id 선택 메서드:
+ -> getElementById("아이디명")
+ document.getElementById("id명");
+
+ 2. class 선택 메서드:
+ -> getELEMEBTSbyClassName("클래스명")
+document.getElementByclassName("클래스명");
+((하위속성))
+length -클래스개수
+((순번선택 하위 메서드))
+item(순번) - 구체적인 순번요소 선택(0부터 서식)
+
+
+3. tag 선택 메서드:
+ -> getELEMEBTSbyClassName("태그명")
+document.getElementByclassName("tag명");
+((하위속성))
+length -요소개수
+((순번선택 하위 메서드))
+item(순번) - 구체적인 순번요소 선택(0부터 서식)
+ 
+
+[ HTML 컬렉션은 무엇인가? ]
+            - DOM을 통하여 선택된 다중선택요소인
+            class/tag 를 메모리상 수집하는 공간
+            - 상세 선택시 순번선택 메서드인 item()을
+            사용하여 선택한다
+            - 배열처럼 순서대로 메모리를 사용하기 때문에
+            '유사배열'이라고 불리우며 배열처럼 대괄호순번
+            을 사용하여 선택할 수 있다!
+            - document
+            .getElementsByClassName(클래스명).item(0)
+            -> 아래처럼 점안찍고 대괄호 순번사용가능!
+            .getElementsByClassName(클래스명)[0]
+
+            - 컬렉션 전체 개수정보는 length 속성으로 
+            알 수 있다!
+
+            참고) 
+            https://www.w3schools.com/js/js_htmldom_collections.asp
+
+*********/
+
+
 } ///////////김비서나와라 함수 /////////////
+
+
+
+/*************************************** 
+함수명: 맘대로해라
+기능:선택요소와 style과 html을 변경함
+
+***************************************/
+
+function 맘대로해라(헐,헉스) {
+  //헐-.원이야 순번 /헉스 - 그림제목
+  //1. 함수호출확인
+  console.log("니맘대로하세요!",헐,헉스);
+
+  //2. 대상선정 : .박스야 .원이야
+  //해당요소의 순번은 헐 변수에 들어있음!
+  
+  var 아파트 = document.querySelectorAll('.박스야 .원이야')[헐];
+  //->아래와 같이 써도 같은것임!
+//  document.querySelectorAll('.박스야 .원이야').item[헐];
+
+  /**********************************  
+[JSDOM의 특별한 선택 매서드 2가지] 
+1. queryselector(css선택지)-하나만선택
+2. querySelectorAll(css선택지)-여러개 선택
+-> 2번방식은 htmlcollection을 변환한다!
+-> 따라서 length와 item(순번)/[순번]을 사용함!
+  
+  **********************************/
+  // document.getElementsByClassName("박스야").item(0)
+  // .getElementsByClassName("원이야").item(헐);
+
+  console.log("대상요소",아파트);
+
+
+  //3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로 이동하며
+  // 박스에 유튜브 비디오가 나오도록 한다!
+
+
+//3-1. 트랜지션 설정
+아파트.style.transition = "1s ease-in-out,right .5s 1s";
+
+//3-2. 위치이동
+아파트.style.top="calc(100% - 200px)";
+아파트.style.right="calc(100% - 200px*"+(헐+1)+")";
+//순번에 11을 더해서 곱한이유는 right위치를 순서대로 잡기위함!
+
+//3-3. 유튜브 동영상 넣기
+아파트.innerHTML= `<iframe id= "my-apt"
+src="https://www.youtube.com/embed/8Ebqe2Dbzls?autoplay=1"
+allow="autoplay;"></iframe>`;
+
+//3-4. 아이프레임 디자인 넣기: 선택된 아파트 하위 iframe
+var 뮤비 = 아파트.querySelector('iframe');
+//csstext 속성: 한꺼번에 문자열로 css를 넣을때 사용
+//주의: 따로 속성 셋팅할때와 달리 다른 인라인속성을
+//덮어써서 지워버리니가 조심하라!
+ 뮤비.style.cssText = `
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  `; 뮤비.style.cssText = `
+  position: absolute;
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+`;
+
+
+//3-5. class 추가/제거// 
+//-> 현재 class "on"때문에 회전애니가 적용됨!
+  // 그래서 클릭된 요소는 "on"을 제거한다!
+아파트.classList.remove("on");
+
+//자바스크립트를 쉽게 스는 한가지 방법!!
+//바로 클래스 넣기/빼기!!!
+//클래스 제어 객체: classList
+//(1)add(클래스명) : 클래스 추가
+//(1)remove(클래스명) : 클래스 제거
+//(1)toggle(클래스명) : 클래스 초가/제거
+
+
+
+
+}//////////맘대로해라 함수 ////////////
