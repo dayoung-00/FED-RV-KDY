@@ -27,12 +27,13 @@ function 김비서나와라() {
   //하나뿐이어도  0번째라고 해야함!
 
   "클래스선택 HTML컬랙션 객체",
-  console.log(document.getElementsByClassName("pbox"),
-  "요소선택 HTML 컬랙션 객체",
-  document.getElementsByClassName("span"),
-  "아이디선택 HTML 요소 객체",
-  document.getElementsByClassName("name")
-);
+    console.log(
+      document.getElementsByClassName("pbox"),
+      "요소선택 HTML 컬랙션 객체",
+      document.getElementsByClassName("span"),
+      "아이디선택 HTML 요소 객체",
+      document.getElementsByClassName("name")
+    );
 
   //변수의 대상 할당하기!
   var 나변수 = document.getElementsByClassName("pbox").item(0);
@@ -100,18 +101,17 @@ function 김비서나와라() {
   나변수.style.scale = "1.3";
   //트랜스폼 속성 한번에 쓰기
   // 나변수.style.transform = "translate(-50%, -50%) rotate(360deg) scale(1.3)";
-  
-  
+
   //3-11. 전체 배경색 바꾸기
   //대상 : body
   //js에서 body는 특별히 취급하여
   //docyment.body로 선택
-  var 나바디=document.body;
+  var 나바디 = document.body;
   나바디.style.backgroundColor = "lightblue";
-//   나바디.style.backgroundColor="linear-gradient(45deg,lightgreen,hotpink,lightblue";
+  //   나바디.style.backgroundColor="linear-gradient(45deg,lightgreen,hotpink,lightblue";
   나바디.style.transition = "3s 5s";
 
-/*********
+  /*********
  [JS DOM의 요소 선택 메서드]
  1. id 선택 메서드:
  -> getElementById("아이디명")
@@ -155,11 +155,7 @@ item(순번) - 구체적인 순번요소 선택(0부터 서식)
             https://www.w3schools.com/js/js_htmldom_collections.asp
 
 *********/
-
-
 } ///////////김비서나와라 함수 /////////////
-
-
 
 /*************************************** 
 함수명: 맘대로해라
@@ -167,17 +163,17 @@ item(순번) - 구체적인 순번요소 선택(0부터 서식)
 
 ***************************************/
 
-function 맘대로해라(헐,헉스) {
+function 맘대로해라(헐, 헉스) {
   //헐-.원이야 순번 /헉스 - 그림제목
   //1. 함수호출확인
-  console.log("니맘대로하세요!",헐,헉스);
+  console.log("니맘대로하세요!", 헐, 헉스);
 
   //2. 대상선정 : .박스야 .원이야
   //해당요소의 순번은 헐 변수에 들어있음!
-  
-  var 아파트 = document.querySelectorAll('.박스야 .원이야')[헐];
+
+  var 아파트 = document.querySelectorAll(".박스야 .원이야")[헐];
   //->아래와 같이 써도 같은것임!
-//  document.querySelectorAll('.박스야 .원이야').item[헐];
+  //  document.querySelectorAll('.박스야 .원이야').item[헐];
 
   /**********************************  
 [JSDOM의 특별한 선택 매서드 2가지] 
@@ -190,38 +186,30 @@ function 맘대로해라(헐,헉스) {
   // document.getElementsByClassName("박스야").item(0)
   // .getElementsByClassName("원이야").item(헐);
 
-  console.log("대상요소",아파트);
-
+  console.log("대상요소", 아파트);
 
   //3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로 이동하며
   // 박스에 유튜브 비디오가 나오도록 한다!
 
+  //3-1. 트랜지션 설정
+  아파트.style.transition = "1s ease-in-out,right .5s 1s";
 
-//3-1. 트랜지션 설정
-아파트.style.transition = "1s ease-in-out,right .5s 1s";
+  //3-2. 위치이동
+  아파트.style.top = "calc(100% - 200px)";
+  아파트.style.right = "calc(100% - 200px*" + (헐 + 1) + ")";
+  //순번에 11을 더해서 곱한이유는 right위치를 순서대로 잡기위함!
 
-//3-2. 위치이동
-아파트.style.top="calc(100% - 200px)";
-아파트.style.right="calc(100% - 200px*"+(헐+1)+")";
-//순번에 11을 더해서 곱한이유는 right위치를 순서대로 잡기위함!
-
-//3-3. 유튜브 동영상 넣기
-아파트.innerHTML= `<iframe id= "my-apt"
+  //3-3. 유튜브 동영상 넣기
+  아파트.innerHTML = `<iframe id= "my-apt"
 src="https://www.youtube.com/embed/8Ebqe2Dbzls?autoplay=1"
 allow="autoplay;"></iframe>`;
 
-//3-4. 아이프레임 디자인 넣기: 선택된 아파트 하위 iframe
-var 뮤비 = 아파트.querySelector('iframe');
-//csstext 속성: 한꺼번에 문자열로 css를 넣을때 사용
-//주의: 따로 속성 셋팅할때와 달리 다른 인라인속성을
-//덮어써서 지워버리니가 조심하라!
- 뮤비.style.cssText = `
-    position: absolute;
-    border: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  `; 뮤비.style.cssText = `
+  //3-4. 아이프레임 디자인 넣기: 선택된 아파트 하위 iframe
+  var 뮤비 = 아파트.querySelector("iframe");
+  //csstext 속성: 한꺼번에 문자열로 css를 넣을때 사용
+  //주의: 따로 속성 셋팅할때와 달리 다른 인라인속성을
+  //덮어써서 지워버리니가 조심하라!
+  뮤비.style.cssText = `
   position: absolute;
   border: none;
   width: 100%;
@@ -229,20 +217,57 @@ var 뮤비 = 아파트.querySelector('iframe');
   border-radius: 50%;
 `;
 
-
-//3-5. class 추가/제거// 
-//-> 현재 class "on"때문에 회전애니가 적용됨!
+  //3-5. class 추가/제거//
+  //-> 현재 class "on"때문에 회전애니가 적용됨!
   // 그래서 클릭된 요소는 "on"을 제거한다!
-아파트.classList.remove("on");
+  아파트.classList.remove("on");
 
-//자바스크립트를 쉽게 스는 한가지 방법!!
-//바로 클래스 넣기/빼기!!!
-//클래스 제어 객체: classList
-//(1)add(클래스명) : 클래스 추가
-//(1)remove(클래스명) : 클래스 제거
-//(1)toggle(클래스명) : 클래스 초가/제거
+  //자바스크립트를 쉽게 스는 한가지 방법!!
+  //바로 클래스 넣기/빼기!!!
+  //클래스 제어 객체: classList
+  //(1)add(클래스명) : 클래스 추가
+  //(1)remove(클래스명) : 클래스 제거
+  //(1)toggle(클래스명) : 클래스 초가/제거
+} //////////맘대로해라 함수 ////////////
+
+/*********************************************  
+함수명:사간사각
+기능: 전체가 사각형으로 화면을 채우며
+애니메이션 됨!
 
 
 
+*********************************************/
+function 사각사각() {
+  //1. 함수호출확인
+  console.log("사각사각");
 
-}//////////맘대로해라 함수 ////////////
+  //2. 대상선정 : .넌뭐냐
+  var 나야나 = document.querySelector(".넌뭐냐");
+  console.log("선택요소", 나야나);
+
+  //3. 변경내용 : top, 트랜지션, width, height값 변경
+  나야나.style.top = "0";
+  나야나.style.borderRadius = "0";
+  나야나.style.width = "100%";
+  나야나.style.height = "100%";
+  나야나.style.transition = "3s 1s,top 1s 0s";
+  //top값부터 1초간 작동 나머지는 1초후 작동!
+  나야나.style.zindex = "100"; //맨위
+
+  // 4. 추가변경 : 글자넣기
+  // innerText = 글자내용
+  // -> 태그없는 글자 데이터만 넣기!
+  나야나.innerText = "JS입문을 환영합니다!";
+
+  // 5. 글자 관련 CSS 넣기!
+  나야나.style.fontSize = "70px";
+  나야나.style.color = "aqua";
+  나야나.style.fontWeight = "bold";
+  나야나.style.textShadow = "5px 5px 3px #000";
+  나야나.style.lineHeight = window.innerHeight + "px";
+  // window.innerHeight는 현재 윈도우창 높이값 리턴!
+
+  // 화면높이값
+  console.log("화면높이값:", window.innerHeight);
+} //////////사각사각 함수 ////////////
