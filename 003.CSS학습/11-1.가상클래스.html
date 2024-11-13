@@ -102,7 +102,7 @@
       /* 요즘은 a요소를 바로 선택하여
         셋팅하고 :hover 정도만 변경한다! */
       h2 a {
-        /* color: darkorange; */
+        color: darkorange;
       }
 
       /* 포커스 가상클래스 :focus */
@@ -172,39 +172,42 @@
         /* pointer 손가락모양 */
         cursor: pointer;
       }
-      /* .part1 li의 첫번째 자식  */
+
+      /* .part1 li 의 첫번째 자식 */
       .part1 li:first-child {
         font: 40px "궁서";
+        /* font-size: 40px;
+        font-family: "궁서"; */
         color: red;
       }
-      /* .part1 li의 첫번째 자식 오버시 */
+      /* .part1 li 의 첫번째 자식 오버시 */
       .part1 li:first-child:hover {
         font-style: italic;
       }
-      /* .part1 li의 두번째 자식  */
-
+      
+      /* .part1 li 의 두번째 자식 */
       .part1 li:nth-child(2) {
         font: 35px "굴림";
         color: skyblue;
       }
-      /* .part1 li의 두번째 자식 오버시  */
-
+      /* .part1 li 의 두번째 자식 오버시 */
       .part1 li:nth-child(2):hover {
         font-weight: bold;
       }
-      /* .part1 li의 세번째 자식 */
+      /* .part1 li 의 세번째 자식 */
       .part1 li:nth-child(3) {
         font: 25px "돋움";
         color: darkkhaki;
       }
-       /* .part1 li의 세번째 자식 오버시 */
+      /* .part1 li 의 세번째 자식 오버시 */
       .part1 li:nth-child(3):hover {
         /* 단어간격 : ws숫자 */
         word-spacing: 20px;
         /* 자간 : ls숫자 */
         letter-spacing: 10px;
       }
-      /* .part1 li의 네번째 자식 오버시 */
+      
+      /* .part1 li 의 네번째 자식 */
       .part1 li:nth-child(4) {
         font: 42px "맑은 고딕";
         color: darkmagenta;
@@ -236,11 +239,13 @@
             예) nth-child(-n+20) -> 20,19,18,...
             -> 주의: -n을 반드시 먼저써야함!
         */
-        /* 4번째 li부터 끝까지 선택 */
+      
+        /* 4번째 li부터 끝까지선택 */
       /* .part1 li:nth-child(4) ~ li { */
 
       /* 5번째부터 9번째까지 선택 */
-      .part1 li:nth-child(4) ~ li:nth-child(-n + 9){
+      .part1 li:nth-child(4) ~ li:nth-child(-n + 9) {
+
         font-size: 24px;
         color: darkgoldenrod;
       }
@@ -251,14 +256,14 @@
             :nth-child(odd) odd는 홀수
         */
         /* li짝수번째 */
-      .part1 li:nth-child(even) {
-        background-image: linear-gradient(
-          to right,
-          lightblue,
-          rgb(255, 167, 135)
-        );
-      }
-      /* li홀수번째 */
+        .part1 li:nth-child(even) {
+          background-image: linear-gradient(
+            to right,
+            lightblue,
+            rgb(255, 167, 135)
+            );
+          }
+          /* li홀수번째 */
       .part1 li:nth-child(odd) {
         background-image: linear-gradient(
           to right,
@@ -276,13 +281,12 @@
             3n+1 -> 1, 4, 7, 10,...
 
         */
-      .part1 li:nth-child(3n + 1)
-      ::before {
+      .part1 li:nth-child(3n+1)::before {
         content: "👩‍🦰";
       }
 
       /* 마지막 li선택 */
-      .part1 :last-child {
+      .part1 li:last-child {
         font: 40px "굴림";
         font-weight: bold;
         /* 글자에 배경 그라데이션 반영하기 */
@@ -298,7 +302,7 @@
       of-type 가상클래스를 사용한다! */
 
       /* div 중에 2번째 */
-      .part2 div:first-of-type {
+      .part2 div:nth-of-type(2) {
         font: 30px "궁서";
         color: red;
       }
@@ -336,30 +340,32 @@
         5. 속성명만 쓰면 속성이 있는 것 모두 선택함
         예) [alt] -> alt속성이 있는 것 선택
 
-        참고)                https://www.w3schools.com/css/css_attribute_selectors.asp
+        참고)                
+        https://www.w3schools.com/css/css_attribute_selectors.asp
         
       *********************************************/
       /* = 정확히 일치 */
-      [title='역겨워!']::after {
-        content: "🤶";
+      [title='역겨워!']::after{
+        content: '🤶';
       }
       /* ^= 시작하는 문자 */
-      [title^=즈려]::after {
-        content: "👩‍🦰";
+      [title^=즈려]::after{
+        content: '👩‍🦰';
       }
       /* $= 끝나는 문자 */
-      [title$=ㅋㅋ]::after {
-        content: "👮‍♀️";
+      [title$=ㅋㅋ]::after{
+        content: '👮‍♀️';
       }
       /* *= 모든 문자 */
-      [title*=변]::after  {
-        content: "👨‍💻";
+      [title*=변]::after{
+        content: '👨‍💻';
       }
       /* title속성이 있는 모든 요소 */
       [title]{
         font-size: 40px;
         outline: 4px dotted lightgreen;
       }
+
     </style>
   </head>
   <body>
@@ -389,13 +395,16 @@
     <div class="part2">
       <div>나 보기가 역겨워</div>
       <em>가실 때에는</em>
-      <div title="말없냐?ㅋㅋ">말없이 고이 보내 드리우리다</div>
-      <em title="영변은 어디?ㅋ"> 영변에 약산</em>
+      <div title="말없냐?ㅋㅋ">
+        말없이 고이 보내 드리우리다</div>
+      <em title="영변은 어디?ㅋ">
+        영변에 약산</em>
       <div>진달래꽃</div>
       <i>아름 따다 가실 길에 뿌리우리다</i>
       <div>가시는 걸음 걸음</div>
       <i>놓인 그 꽃을</i>
-      <div title="즈려밟고 함가봐!">사뿐히 즈려밟고 가시옵소서</div>
+      <div title="즈려밟고 함가봐!">
+        사뿐히 즈려밟고 가시옵소서</div>
       <i title="역겨워!">나 보기가 역겨워</i>
       <div>가실 때에는</div>
       <span>죽어도 아니 눈물 흘리우리다</span>
