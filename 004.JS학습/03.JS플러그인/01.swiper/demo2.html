@@ -21,7 +21,8 @@
         aspect-ratio: 16/9;
         margin: 0 auto;
         outline: 2px solid #ccc;
-        background: #000;
+        /* 배경검정색 */
+        background-color: #000;
       }
 
       /* 각 스와이퍼 개별 슬라이드 디자인 */
@@ -116,19 +117,18 @@
           } // else //
         } ////////// controlSwp함수 /////////
 
-        const bgColor = ['pink','lightgreen',
-        'lightyellow','limegreen'];
-        let arrNem=0;
+        const bgColor = ['pink','lightgreen','lightyellow','limegreen'];
+        let arrNum = 0;
 
-        //스와이퍼 슬라이드 변경시 배경색 바꾸기
+        // 스와이퍼 슬라이드 변경시 배경색 바꾸기
         swiper.on("slideChange", function () {
           console.log("slide changed");
-          //색상변경
-          document.body.style.backgroundColor=
-          bgColor[arrNem];
-          //배열수 증가
-           arrNem++;
-           if(arrNem>3)arrNem=0;
+          // 색상변경
+          document.body.style.backgroundColor = 
+          bgColor[arrNum];
+          // 배열수 증가
+          arrNum++;
+          if(arrNum>3)arrNum=0;
         });
       }); //////////// load구역 ///////////////////
     </script>
