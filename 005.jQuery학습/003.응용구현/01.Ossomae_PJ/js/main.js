@@ -51,7 +51,7 @@ function blockCode(){
     clickSts = true;//잠금
     setTimeout(()=>{
         clickSts = false;//잠금 해제
-    }, 400); // 4초후 실행
+    }, 400); // 0.4초후 실행
 
     // 3. 광클상태 false이면 전역셋팅후 리턴 false
     return false;
@@ -72,14 +72,14 @@ function slideAuto(){
     autoI = setInterval(()=>{
         $target.append($target.find('div').first());
     }, 2000);
-}
+} /// slideAuto함수 ///
 
 // 2. 지우기 함수 ////
 function clearAuto(){
     clearInterval(autoI);
     clearTimeout(autoT);
     autoT = setTimeout(slideAuto, 5000);
-}
+} /// clearAuto 함수 ////
 
 // 3. 버튼 클릭시 지우기 함수 호출 셋팅 ///
 $('.abtn').click(clearAuto);
