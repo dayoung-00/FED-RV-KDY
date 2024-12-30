@@ -66,17 +66,19 @@ console.log(개인정보);
 
 // 화면출력
 demo.innerHTML = hCode;
-//3. 세번째 요소 .mvpart에 영화정보 출력하기
-//단, ol>li를 사용할 것!
+
+// 3. 세번째 요소 .mvpart에 영화정보 출력하기
+// 단, ol>li를 사용할 것!
+// 대상:
 const mvBox = 헐.qs('.mvpart');
 
 console.log("데이터:",영화정보);
-//제목출력
-mvBox.innerHTML = "<h2>영화위시리스트</h2>";
+// 제목출력
+mvBox.innerHTML = "<h2>🎃영화위시리스트🎃</h2>";
 
-//객체를 forEach()메서드 사용하려면?
-//객체를 배열화한다!!
-//->OBject.keys(객체) -> 객체의 키값배열생성!
+// 객체를 forEach() 메서드 사용하려면?
+// 객체를 배열화한다!!
+// -> Object.keys(객체) -> 객체의 키값배열생성!
 Object.keys(영화정보).forEach(v=>{
     mvBox.innerHTML += `
         <ol>
@@ -87,13 +89,7 @@ Object.keys(영화정보).forEach(v=>{
             <li>🎪한마디 : ${영화정보[v].문구}</li>
         </ol>
     `;
-});
-
-
-
-
-
-
+});/// forEach ///
 
 /**********************************************     
     [ import 형식 ]
