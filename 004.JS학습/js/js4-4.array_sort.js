@@ -284,39 +284,78 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 
 ///////////////////////////////////////////////////////////////////////
 
-// [1] 숫자로만된 배열의 정렬
+// [1] 숫자로만된 배열의 정렬 //////////////////
 
 // [1-1] 출력 대상: .showNum
 const showNum = myFn.qs(".showNum");
 
 // [1-2] 현재 숫자배열 출력하기
 // 배열대상: arrNumber
-const showNumFn = () => {
-    showNum.innerHTML = arrNumber
-      .map(
-        (v) => `
+const showNumFn = (newArray) => {
+  // newArray는 변경할 배열전달
+  // map은 원본배열을 변경하지 않는다!
+  showNum.innerHTML = newArray
+    .map(
+      (v) => `
         <img src="./images/num/num_0${v}.png" alt="숫자이미지">
         `
-      )
-      .join("");
-
+    )
+    .join("");
 }; //////// showNumFn함수 //////
+
 // 최초호출
-showNumFn();
+showNumFn(arrNumber);
+console.log("숫자배열원본:", arrNumber);
 
 // [1-3] 정렬 선택박스 이벤트 설정하기
 myFn.qs("#sel").addEventListener("change", function () {
   console.log(this.value);
 
+  // 원본 배열을 보존하고자 깊은복사를 해줌!
+  const newArray = [...arrNumber];
+  // 스프레드 연산자로 처리함!
+
   if (this.value == 1)
     // 오름차순
-    arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+    newArray.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
   else if (this.value == 2)
     // 내림차순
-    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
+    newArray.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
 
+  // 정렬후 화면출력
+  showNumFn(newArray);
 
-    // 정렬후 화면출력
-    showNumFn();
-
+  console.log("숫자배열원본:", arrNumber);
 }); /////// addEventListener /////////////
+
+// [2] 문자로만된 배열의 정렬 //////////////////
+
+// [2-1] 배열 태그변형후 출력하기 ////
+const showNum2 = myFn.qs(".showNum2");
+
+const showNum2Fn = (newArray) => {
+  // newArray는 처리할 배열전달
+  showNum2.innerHTML = newArray.map((v) => `<span>${v}</span>`).join("");
+}; ////// showNum2Fn 함수 ////////////
+
+// 최초호출
+showNum2Fn(arrString);
+
+// [2-2] 선택박스 변경 이벤트 발생시 정렬변경하기
+myFn.addEvt(myFn.qs("#sel2"), "change", function () {
+  // 원본보존을 위해 깊은복사로 처리
+  const newArray = [...arrString];
+
+  // 1) 오름차순/내림차순 변경처리 ///
+  if (this.value == 1)
+    // 오름차순
+    newArray.sort();
+  else if (this.value == 2)
+    // 내림차순
+    newArray.reverse();
+
+  // 2) 화면출력
+  showNum2Fn(newArray);
+
+  console.log("문자값 배열 원본:", arrString);
+}); ////// change 이벤트 함수 ///////
