@@ -25,7 +25,16 @@ const TopComp = Vue.component("top-comp", {
         <nav class="gnb">
           <ul>
             <li v-for="v in Object.keys(this.gnbMenu)">
-              <router-link to="/item">
+              <router-link :to="{
+                name:'sub-page',
+                // query는 get방식처럼 url창으로 전달함
+                // 값은 {키:값,키:값} 객체형식임
+                // 결과는 url?키=값&키=값
+                // -> params로 보내지 않고 query를 쓴 
+                // 중요한 이유는 페이지가 새로 업데이트되는
+                // 뷰JS 이벤트발생은 query 에서 발생한다!
+                query:{id:v}
+               }">
                 {{v}}
               </router-link>
             </li>
